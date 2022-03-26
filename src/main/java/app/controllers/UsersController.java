@@ -1,5 +1,6 @@
 package app.controllers;
 
+import app.models.ApiError;
 import app.models.UserRegisterModel;
 import app.services.IUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,8 @@ public class UsersController {
     private IUsersService usersService;
 
     @PostMapping("sign-in")
-    public ResponseEntity<?> RegisterUser(@RequestBody @Valid UserRegisterModel userData) {
-        usersService.RegisterUser(userData);
-        return new ResponseEntity<>(userData, HttpStatus.CREATED);
+    public ResponseEntity<?> RegisterUser(@RequestBody @Valid UserRegisterModel userData) throws ApiError {
+        return new ResponseEntity<>(usersService.RegisterUser(userData), HttpStatus.CREATED);
     }
 
 }

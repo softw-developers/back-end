@@ -19,10 +19,4 @@ public class RegisterType {
 
     private String name;
 
-    @OneToOne(mappedBy = "registerType")
-    private User user;
-
-    public RegisterType(Long id) {
-        this.id = id;
-    }
 }
